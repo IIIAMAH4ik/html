@@ -8,19 +8,16 @@ body {
 
 .container {
 	max-width: 390px;
-	margin-bottom: 50px;
 }
 
 .inner {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 200px 200px 300px;
-	grid-gap: 20px; 
+	grid-template-rows: 200px 200px 200px;
 }
 
 .img {
 	width: 150px;
-        height: 150px; 
 }
 
 .item {
@@ -31,12 +28,11 @@ body {
 	display: inline-block;
 	padding: 10px 20px;
 	border: none;
-	background: rgb(252, 247, 235);
+	background: rgb(248, 168, 24);
 	border-radius: 10px;
-	color: #8a6203;
+	color: #fff;
 	text-transform: uppercase;
 	font-weight: 700;
-	margin-bottom: 10px;
 
 	transition: background .2s linear;
 }
@@ -48,19 +44,6 @@ body {
 .usercard {
 	text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
