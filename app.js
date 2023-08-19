@@ -1,64 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- Подключите свой файл стилей -->
-    <title>Меню напитков</title>
-</head>
-<body>
-    <header>
-        <!-- Заголовок и логотип Starbucks -->
-        <h1>Меню напитков</h1>
-        <img src="starbucks-logo.png" alt="Starbucks Logo">
-    </header>
+let tg = window.Telegram.WebApp;
 
-    <nav>
-        <!-- Навигация или категории напитков -->
-        <ul>
-            <li><a href="#cold-drinks">Холодные напитки</a></li>
-            <li><a href="#hot-drinks">Горячие напитки</a></li>
-            <!-- Добавьте другие категории, если необходимо -->
-        </ul>
-    </nav>
+tg.expand();
 
-    <section id="cold-drinks">
-        <!-- Секция для холодных напитков -->
-        <h2>Холодные напитки</h2>
-        <ul>
-            <li>
-                <img src="iced-coffee.jpg" alt="Iced Coffee">
-                <h3>Ледяной кофе</h3>
-                <p>Описание ледяного кофе.</p>
-                <p>Цена: $3.99</p>
-                <button>Добавить в корзину</button>
-            </li>
-            <!-- Добавьте другие холодные напитки -->
-        </ul>
-    </section>
+tg.MainButton.textColor = '#FFFFFF';
+tg.MainButton.color = '#2cab37';
 
-    <section id="hot-drinks">
-        <!-- Секция для горячих напитков -->
-        <h2>Горячие напитки</h2>
-        <ul>
-            <li>
-                <img src="hot-coffee.jpg" alt="Hot Coffee">
-                <h3>Горячий кофе</h3>
-                <p>Описание горячего кофе.</p>
-                <p>Цена: $2.99</p>
-                <button>Добавить в корзину</button>
-            </li>
-            <!-- Добавьте другие горячие напитки -->
-        </ul>
-    </section>
+let selectedItems = []; // Здесь будем хранить выбранные продукты
+let buyButton = document.createElement('button');
+buyButton.textContent = 'Купить';
 
-    <!-- Добавьте другие секции для разных категорий напитков -->
 
-    <footer>
-        <!-- Футер вашей страницы -->
-        <p>&copy; 2023 Starbucks Coffee Company</p>
-    </footer>
-</body>
-</html>
+let btn1 = document.getElementById("btn1");
+let btn2 = document.getElementById("btn2");
+let btn3 = document.getElementById("btn3");
+let btn4 = document.getElementById("btn4");
+let btn5 = document.getElementById("btn5");
+let btn6 = document.getElementById("btn6");
+let btn7 = document.getElementById("btn7");
+
+btn1.addEventListener('click', function () {
+  selectedItems.push('Экспрессо'); // Добавляем выбранный продукт в массив
+  updateCard(); // Вызываем функцию для обновления отображения корзины
+});
+
+btn2.addEventListener('click', function () {
+  selectedItems.push('Капучино');
+  updateCard();
+});
+
+btn3.addEventListener('click', function () {
+  selectedItems.push('Американо'); // Добавляем выбранный продукт в массив
+  updateCard(); // Вызываем функцию для обновления отображения корзины
+});
+
+btn4.addEventListener('click', function () {
+  selectedItems.push('Мокко');
+  updateCard();
+});
+
+btn5.addEventListener('click', function () {
+  selectedItems.push('V-60'); // Добавляем выбранный продукт в массив
+  updateCard(); // Вызываем функцию для обновления отображения корзины
+});
+
+btn6.addEventListener('click', function () {
+  selectedItems.push('Латте');
+  updateCard();
+});
+
+btn7.addEventListener('click', function () {
+  selectedItems.push('Раф'); // Добавляем выбранный продукт в массив
+  updateCard(); // Вызываем функцию для обновления отображения корзины
+});
+
+
+
+
+let usercard = document.getElementById("usercard");
+
+// Создаем функцию для обновления корзины
+function updateCard() {
+  usercard.innerHTML = ''; // Очищаем содержимое корзины
+
+  // Создаем элементы для отображения выбранных продуктов
+  selectedItems.forEach(itemName => {
+    let productItem = document.createElement('div');
+    productItem.textContent = itemName;
+    usercard.appendChild(productItem);
+  });
+
+  // Прикрепляем кнопку "Купить" к корзине
+  usercard.appendChild(buyButton);
+}
+
+// Обработчик клика на кнопке "Купить"
+buyButton.addEventListener('click', function () {
+  if (selectedItems.length === 0) {
+    alert('Добавьте продукты в корзину перед оплатой.');
+  } else {
+    let orderSummary = 'Вы выбрали:\n';
+
+    selectedItems.forEach(itemName => {
+      orderSummary += `- ${itemName}\n`;
+    });
+
+    tg.MainButton.setText('Оплатить'); // Изменяем текст кнопки на "Оплатить"
+    tg.MainButton.show();
+
+    // Отправляем информацию о заказе в Telegram
+    tg.sendData(orderSummary);
+  }
+});
+
+let p = document.createElement("p");
+
+p.innerText = `${tg.initDataUnsafe.user.first_name}
+${tg.initDataUnsafe.user.last_name}`;
+
+usercard.appendChild(p);
+
 
 
