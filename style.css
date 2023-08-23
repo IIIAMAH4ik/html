@@ -76,5 +76,56 @@ body {
     opacity: 1;
 }
 
+.custom-header {
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    align-items: center;
+}
 
+/* Стили для верхней навигации в шапке */
+.top-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.top-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.top-nav a:hover {
+    color: #0056b3;
+}
+
+/* Стили для нижней навигации в шапке */
+.bottom-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bottom-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.bottom-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.bottom-nav a:hover {
+    color: #0056b3;
+}
 
