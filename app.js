@@ -2,6 +2,14 @@
 const cartContent = document.querySelector(".cart-content");
 const checkoutButton = document.getElementById("checkout-button");
 
+addToCartButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        // Скрываем кнопку "Добавить"
+        button.style.display = 'none';
+        // Показываем соответствующие элементы -+ и количество товаров
+        quantityFields[index].style.display = 'inline-block';
+    });
+});
 // Создаем пустой объект корзины, куда будем добавлять товары
 const cart = {};
 
