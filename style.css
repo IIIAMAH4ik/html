@@ -52,7 +52,7 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff; /* Цвет фона */
+    background-color: #997648; /* Цвет фона */
     color: #fff; /* Цвет иконки */
     width: 50px; /* Ширина кнопки */
     height: 50px; /* Высота кнопки */
@@ -72,7 +72,7 @@ body {
 
 /* Стиль кнопки при наведении */
 .scroll-to-top:hover {
-    background-color: #0056b3; /* Цвет фона при наведении */
+    background-color: #b0925a; /* Цвет фона при наведении */
     opacity: 1;
 }
 
