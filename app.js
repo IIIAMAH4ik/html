@@ -75,6 +75,12 @@ function changeCartItemQuantity(itemName, operator) {
         updateCartDisplay();
     }
 }
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Плавная прокрутка
+    });
+}
 
 // Обработчик нажатия на кнопку "Оформить заказ"
 checkoutButton.addEventListener("click", () => {
@@ -91,3 +97,4 @@ checkoutButton.addEventListener("click", () => {
     }
     updateCartDisplay(); // Обновляем отображение корзины
 });
+document.querySelector(".scroll-to-top").addEventListener("click", scrollToTop);
