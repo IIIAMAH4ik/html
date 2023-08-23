@@ -2,7 +2,7 @@
 const cartContent = document.querySelector(".cart-content");
 const checkoutButton = document.getElementById("checkout-button");
 
-addToCartButtons.forEach((button, index) => {
+document.querySelectorAll(".add-to-cart").forEach((button, index) => {
     button.addEventListener('click', () => {
         // Скрываем кнопку "Добавить"
         button.style.display = 'none';
