@@ -61,7 +61,8 @@ body {
     line-height: 50px; /* Центрируем содержимое вертикально */
     font-size: 24px; /* Размер иконки */
     text-decoration: none; /* Убираем подчеркивание для ссылки */
-    transition: background-color 0.3s ease-in-out; /* Анимация при наведении */
+    transition: background-color 0.3s ease-in-out;/* Анимация при наведении */
+    opacity: 0.6;
 }
 
 /* Стиль иконки стрелочки (в данном случае, используется FontAwesome) */
@@ -72,6 +73,7 @@ body {
 /* Стиль кнопки при наведении */
 .scroll-to-top:hover {
     background-color: #0056b3; /* Цвет фона при наведении */
+    opacity: 1;
 }
 
 
