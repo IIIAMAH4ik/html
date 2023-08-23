@@ -75,26 +75,37 @@ function changeCartItemQuantity(itemName, operator) {
         updateCartDisplay();
     }
 }
+
 function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: "smooth" // Плавная прокрутка
+        behavior: "smooth"
     });
 }
 
 // Обработчик нажатия на кнопку "Оформить заказ"
 checkoutButton.addEventListener("click", () => {
-    // Здесь можно добавить логику оформления заказа и отправку данных на сервер
-
-    const chatId = 797915581;// Пример отправки данных о заказе в Telegram через WebApp API
-	
+    const chatId = 797915581;
     const message = "Заказ успешно оформлен! Сумма заказа: $" + totalPrice.toFixed(2);
-    window.Telegram.WebApp.sendTextMessage(chatId, message); // Здесь chatId - это идентификатор чата с вашим ботом
-
-    cartContent.innerHTML = ""; // Очищаем корзину после оформления заказа
+    window.Telegram.WebApp.sendTextMessage(chatId, message);
+    cartContent.innerHTML = "";
     for (const itemName in cart) {
         delete cart[itemName];
     }
-    updateCartDisplay(); // Обновляем отображение корзины
+    updateCartDisplay();
 });
+
+// Добавленный код для отображения полей для изменения количества товара
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const quantityFields = document.querySelectorAll('.quantity');
+
+addToCartButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        button.style.display = 'none';
+        quantityFields[index].style.display = 'flex';
+    });
+});
+
+// Добавлен обработчик для кнопки "Наверх"
 document.querySelector(".scroll-to-top").addEventListener("click", scrollToTop);
+
