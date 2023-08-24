@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css"> <!-- Подключение ваших CSS стилей -->
     <title>Интернет-магазин кофейни</title>
 </head>
-<body>
+<body class="dark-theme">
     <header class="custom-header">
     <nav class="top-nav">
         <ul>
@@ -134,6 +134,9 @@
             <i class="fa fa-arrow-up"></i>
         </a>
     </div>
+
+    <button id="theme-toggle">Сменить тему</button>  
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="app.js"></script> <!-- Подключение вашего JavaScript кода -->
     <script>
@@ -143,6 +146,16 @@
                 $("html, body").animate({ scrollTop: 0 }, "slow");
                 return false;
             });
+        });
+    </script>
+    <script>
+        // JavaScript код для переключения темы
+        const body = document.body;
+        const themeToggle = document.getElementById("theme-toggle");
+
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-theme");
+            body.classList.toggle("light-theme");
         });
     </script>
 </body>
