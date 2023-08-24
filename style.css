@@ -36,7 +36,19 @@ body {
   background: lightblue;
 }
 
-
+/* Стили для уведомления */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    border-radius: 5px;
+    display: none; /* Устанавливаем начальное скрытое состояние */
+    z-index: 1000; /* Поверх всех других элементов */
+}
 .usercard {
 	text-align: center;
 }
