@@ -1,3 +1,12 @@
+// Функция для отображения уведомления
+function showNotification() {
+    const notification = document.getElementById("notification");
+    notification.style.display = "block";
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 2000); // Уведомление исчезнет через 2 секунды
+}
+
 // Получаем ссылки на нужные элементы DOM
 const cartContent = document.querySelector(".cart-content");
 const checkoutButton = document.getElementById("checkout-button");
@@ -10,6 +19,7 @@ document.querySelectorAll(".add-to-cart").forEach((button, index) => {
         const itemName = item.textContent;
         const itemPrice = parseFloat(item.nextElementSibling.nextElementSibling.textContent.replace("Цена: $", ""));
         addToCart(itemName, itemPrice);
+        showNotification(); // Вызываем функцию для отображения уведомления
     });
 });
 // Создаем пустой объект корзины, куда будем добавлять товары
