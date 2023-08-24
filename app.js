@@ -38,6 +38,14 @@ function addToCart(itemName, itemPrice) {
         };
     }
     updateCartDisplay();
+
+    const notification = document.getElementById("notification");
+    notification.style.display = "block";
+
+    // Скрываем уведомление через несколько секунд
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 2000); // Уведомление исчезнет через 2 секунды (2000 миллисекунд)
 }
 
 // Функция для обновления отображения корзины
