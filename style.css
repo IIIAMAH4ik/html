@@ -1,46 +1,38 @@
+:root {
+  --dark-theme-bg-color: #000;
+  --dark-theme-text-color: #fff;
+  --light-theme-bg-color: #fff;
+  --light-theme-text-color: #000;
+}
+
 body {
-	margin: 0;
-	padding: 0;
-	font-size: 18px;
-	color: var(--tg-theme-text-color);
-	background: var(--tg-theme-bg-color);
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
 }
 
-.container {
-	max-width: 390px;
+/* ... остальные стили ... */
+
+/* Стили для кнопок в темной теме */
+.dark-theme .btn {
+  background: rgb(161, 121, 61);
+  color: #fff;
 }
 
-.inner {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 200px 200px 200px;
+.dark-theme .btn:hover {
+  background: lightgreen;
 }
 
-.img {
-	width: 150px;
-	height: 150px;
+/* Стили для кнопок в светлой теме */
+.light-theme .btn {
+  background: #007bff;
+  color: #fff;
 }
 
-.item {
-	text-align: center;
+.light-theme .btn:hover {
+  background: lightblue;
 }
 
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	border: none;
-	background: rgb(161, 121, 61);
-	border-radius: 10px;
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-
-	transition: background .2s linear;
-}
-
-.btn:hover {
-	background: lightgreen;
-}
 
 .usercard {
 	text-align: center;
