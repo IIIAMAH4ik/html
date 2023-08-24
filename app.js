@@ -15,6 +15,18 @@ document.querySelectorAll(".add-to-cart").forEach((button, index) => {
 // Создаем пустой объект корзины, куда будем добавлять товары
 const cart = {};
 
+cartContent.addEventListener('click', (event) => {
+    if (event.target.classList.contains('add-to-cart')) {
+        // Получаем ближайшего родителя типа .cart-item
+        const cartItem = event.target.closest('.cart-item');
+        if (cartItem) {
+            // Получаем данные о товаре из родительского элемента .cart-item
+            const itemName = cartItem.querySelector('span').textContent;
+            const itemPrice = parseFloat(cartItem.querySelector('.price').textContent.replace("Цена: $", ""));
+            addToCart(itemName, itemPrice);
+        }
+    }
+});
 // Функция для добавления товара в корзину
 function addToCart(itemName, itemPrice) {
     if (cart[itemName]) {
@@ -77,14 +89,7 @@ function updateCartDisplay() {
 
 
 // Обработчик нажатия на кнопку "Добавить" для товаров
-document.querySelectorAll(".btn").forEach((button, index) => {
-    button.addEventListener("click", () => {
-        const item = document.querySelectorAll("h3")[index];
-        const itemName = item.textContent;
-        const itemPrice = parseFloat(item.nextElementSibling.nextElementSibling.textContent.replace("Цена: $", ""));
-        addToCart(itemName, itemPrice);
-    });
-});
+
 
 // Обработчик нажатия на кнопки "+" и "-" в корзине для изменения количества товара
 cartContent.addEventListener("click", (event) => {
@@ -135,15 +140,7 @@ checkoutButton.addEventListener("click", () => {
 });
 
 // Добавленный код для отображения полей для изменения количества товара
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-const quantityFields = document.querySelectorAll('.quantity');
 
-addToCartButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        button.style.display = 'none';
-        quantityFields[index].style.display = 'flex';
-    });
-});
 
 // Добавлен обработчик для кнопки "Наверх"
 document.querySelector(".scroll-to-top").addEventListener("click", scrollToTop);
