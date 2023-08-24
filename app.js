@@ -1,6 +1,8 @@
 // Получаем ссылки на нужные элементы DOM
 const cartContent = document.querySelector(".cart-content");
 const checkoutButton = document.getElementById("checkout-button");
+let quantityFields = document.querySelectorAll('.quantity'); // Объявляем здесь
+let totalPrice = 0;
 
 document.querySelectorAll(".add-to-cart").forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -40,6 +42,9 @@ function updateCartDisplay() {
                 <span>${itemName}</span>
                 <span>Количество: ${item.quantity}</span>
                 <span>Цена: $${itemTotal.toFixed(2)}</span>
+                <button class="plus">+</button>
+                <span>${item.quantity}</span>
+                <button class="minus">-</button>
             </div>
         `;
 
@@ -51,7 +56,25 @@ function updateCartDisplay() {
             <span>Итого: $${totalPrice.toFixed(2)}</span>
         </div>
     `;
+    const plusButtons = document.querySelectorAll('.plus');
+    const minusButtons = document.querySelectorAll('.minus');
+
+    plusButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const itemName = event.target.parentElement.querySelector("span").textContent;
+            changeCartItemQuantity(itemName, 1);
+        });
+    });
+
+    minusButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const itemName = event.target.parentElement.querySelector("span").textContent;
+            changeCartItemQuantity(itemName, -1);
+        });
+    });
+    
 }
+
 
 // Обработчик нажатия на кнопку "Добавить" для товаров
 document.querySelectorAll(".btn").forEach((button, index) => {
@@ -85,10 +108,18 @@ function changeCartItemQuantity(itemName, operator) {
 }
 
 function scrollToTop() {
+
+    cartContent.innerHTML = "";
+    for (const itemName in cart) {
+        delete cart[itemName];
+    }
+    updateCartDisplay();
+        
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+    
 }
 
 // Обработчик нажатия на кнопку "Оформить заказ"
