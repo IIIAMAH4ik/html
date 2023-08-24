@@ -5,11 +5,11 @@ let quantityFields = document.querySelectorAll('.quantity'); // Объявляе
 let totalPrice = 0;
 
 document.querySelectorAll(".add-to-cart").forEach((button, index) => {
-    button.addEventListener('click', () => {
-        // Скрываем кнопку "Добавить"
-        button.style.display = 'none';
-        // Показываем соответствующие элементы -+ и количество товаров
-        quantityFields[index].style.display = 'inline-block';
+    button.addEventListener("click", () => {
+        const item = document.querySelectorAll("h3")[index];
+        const itemName = item.textContent;
+        const itemPrice = parseFloat(item.nextElementSibling.nextElementSibling.textContent.replace("Цена: $", ""));
+        addToCart(itemName, itemPrice);
     });
 });
 // Создаем пустой объект корзины, куда будем добавлять товары
