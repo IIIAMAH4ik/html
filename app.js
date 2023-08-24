@@ -13,13 +13,24 @@ const checkoutButton = document.getElementById("checkout-button");
 let quantityFields = document.querySelectorAll('.quantity'); // Объявляем здесь
 let totalPrice = 0;
 
+// Получаем ссылку на элемент уведомления
+const notification = document.getElementById("notification");
+
 document.querySelectorAll(".add-to-cart").forEach((button, index) => {
     button.addEventListener("click", () => {
         const item = document.querySelectorAll("h3")[index];
         const itemName = item.textContent;
         const itemPrice = parseFloat(item.nextElementSibling.nextElementSibling.textContent.replace("Цена: $", ""));
         addToCart(itemName, itemPrice);
-        showNotification(); // Вызываем функцию для отображения уведомления
+
+        // Показываем уведомление
+        notification.textContent = "Товар добавлен в корзину";
+        notification.style.display = "block";
+
+        // Закрываем уведомление через 2 секунды
+        setTimeout(() => {
+            notification.style.display = "none";
+        }, 2000);
     });
 });
 // Создаем пустой объект корзины, куда будем добавлять товары
