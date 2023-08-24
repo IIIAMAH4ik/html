@@ -24,7 +24,7 @@ document.querySelectorAll(".add-to-cart").forEach((button, index) => {
         addToCart(itemName, itemPrice);
 
         // Показываем уведомление
-        notification.textContent = "Товар добавлен в корзину";
+        notification.textContent = "Вы выбрали " + itemName + "!"; // Здесь можно изменить текст уведомления
         notification.style.display = "block";
 
         // Закрываем уведомление через 2 секунды
