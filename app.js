@@ -143,12 +143,6 @@ function changeCartItemQuantity(itemName, operator) {
 }
 
 function scrollToTop() {
-
-    cartContent.innerHTML = "";
-    for (const itemName in cart) {
-        delete cart[itemName];
-    }
-    updateCartDisplay();
         
     window.scrollTo({
         top: 0,
